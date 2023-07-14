@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { About } from '../pages/About';
 import { Home } from '../pages/Home';
-import { Products } from '../pages/Products';
+import { Movies } from '../pages/Movies';
 import { NotFound } from '../pages/NotFound';
 import { Container, Header, Logo, Link } from './App.styled';
 
@@ -20,13 +20,13 @@ export const App = () => {
             Home
           </Link>
           <Link to="/about">About</Link>
-          <Link to="/products">Products</Link>
+          <Link to="/movies">Movies</Link>
         </nav>
       </Header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/products" element={<Products />} />
+        <Route path="/movies" element={<Movies />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Container>
