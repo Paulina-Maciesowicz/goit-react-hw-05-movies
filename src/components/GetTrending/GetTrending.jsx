@@ -3,9 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { fetchData } from 'components/fetchData';
 import { Loader } from 'components/Loader/Loader';
-import { MovieGalleryItem } from './GetTrendingItem/GetTrendingItem';
 
-import css from './GetTrending.module.css';
+// import css from './GetTrending.module.css';
 
 export const MovieGallery = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);

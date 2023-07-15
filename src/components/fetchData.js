@@ -4,8 +4,8 @@ export const fetchData = async () => {
       `https://api.themoviedb.org/3/trending/movie/day?api_key=474a901dde83d12b9be138b9ccc9ba9f`
     );
     const data = await response.json();
-    console.log(response);
-    return data.hits;
+    console.log(data);
+    return data.results;
   } catch (error) {
     throw error;
   }
