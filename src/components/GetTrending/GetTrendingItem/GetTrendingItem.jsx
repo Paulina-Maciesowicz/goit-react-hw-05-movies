@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import css from './GetTrendingItem.module.css';
 
 export const MovieGalleryItem = ({ movie, setSelectedMovie }) => (
@@ -12,7 +12,7 @@ export const MovieGalleryItem = ({ movie, setSelectedMovie }) => (
   </li>
 );
 
-MovieGalleryItem.propTypes = {
-  // image: PropTypes.object.isRequired,
-  // setSelectedImage: PropTypes.func.isRequired,
-};
+// MovieGalleryItem.propTypes = {
+//   // image: PropTypes.object.isRequired,
+//   // setSelectedImage: PropTypes.func.isRequired,
+// };
