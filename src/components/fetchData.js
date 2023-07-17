@@ -31,7 +31,7 @@ export const fetchSearchMovies = async (query, page = 1) => {
 
         // https://api.themoviedb.org/3/movie/{movie_id}
 
-        `https://api.themoviedb.org/3/movie/575264?api_key=474a901dde83d12b9be138b9ccc9ba9f&language=en-US`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=474a901dde83d12b9be138b9ccc9ba9f&language=en-US`
       );
       const data = await details.json();
       console.log(data);
