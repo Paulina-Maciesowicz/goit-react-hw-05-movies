@@ -35,7 +35,7 @@ export const fetchSearchMovies = async (query, page = 1) => {
       );
       const data = await details.json();
       console.log(data);
-      return data.results;
+      return data;
     } catch (error) {
       throw error;
     }

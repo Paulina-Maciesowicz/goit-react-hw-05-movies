@@ -10,7 +10,7 @@ export const MovieDetails = () => {
   // const movie = getMovieById(id);
   // const location = useLocation();
   // const backLinkHref = location.state?.from ?? '/';
-  const [trendingMovies, setTrendingMovies] = useState([]);
+  const [movieDetails, setMovieDetails] = useState([]);
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -20,12 +20,12 @@ export const MovieDetails = () => {
       setIsLoading(true);
       try {
         const hits = await fetchMovieDetails();
-        setTrendingMovies(hits);
-        console.log(trendingMovies);
+        setMovieDetails(hits.id);
+        console.log(hits.id);
         setIsLoading(false);
       } catch (error) {
         console.error('Error fetching trending movies:', error);
-        setTrendingMovies([]);
+        setMovieDetails([]);
         setIsLoading(false);
       }
     };
@@ -42,6 +42,7 @@ export const MovieDetails = () => {
           Movie
           {/* - {movie.name} - */}
           {id}
+          {movieDetails}
         </h2>
         <p>User Score</p>
         <h3>Overview</h3>
