@@ -23,3 +23,20 @@ export const fetchSearchMovies = async (query, page = 1) => {
       throw error;
     }
   }
+
+  export const fetchMovieDetails = async (id) => {
+    try {
+      const details = await fetch(
+        // `https://api.themoviedb.org/3/search/movie?api_key=474a901dde83d12b9be138b9ccc9ba9f&language=en-US&query=${query}&page=${page}&include_adult=false`
+
+        // https://api.themoviedb.org/3/movie/{movie_id}
+
+        `https://api.themoviedb.org/3/movie/575264?api_key=474a901dde83d12b9be138b9ccc9ba9f&language=en-US`
+      );
+      const data = await details.json();
+      console.log(data);
+      return data.results;
+    } catch (error) {
+      throw error;
+    }
+  };

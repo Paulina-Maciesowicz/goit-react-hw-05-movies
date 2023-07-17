@@ -37,7 +37,7 @@ export const MovieGallery = () => {
         {trendingMovies.map(movie => (
           <li key={movie.id}>
             <Link
-              to={`/goit-react-hw-05-movies/movies/${movie.id}`}
+              to={`/movies/${movie.id}`}
               state={{ from: location }}
             >
               {movie.title || movie.name}
