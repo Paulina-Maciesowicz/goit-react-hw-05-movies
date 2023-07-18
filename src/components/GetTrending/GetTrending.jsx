@@ -37,7 +37,7 @@ export const MovieGallery = () => {
         {trendingMovies.map(movie => (
           <li key={movie.id}>
             <Link
-              to={`/movies/${movie.id}`}
+              to={`/goit-react-hw-05-movies/movies/${movie.id}`}
               state={{ from: location }}
             >
               {movie.title || movie.name}
@@ -47,21 +47,4 @@ export const MovieGallery = () => {
       </ul>
     </div>
   );
-
-  // <ul className={css.movieGallery}>
-  //   {trendingMovies.map(movie => (
-  //     <GetTrendingItem
-  //       key={id()}
-  //       movie={movie}
-  //       setSelectedMovie={setSelectedMovie}
-  //     />
-  //   ))}
-  // </ul>
-  // );
-
-  // MovieGallery.propTypes = {
-  //   // movies: PropTypes.array.isRequired,
-  //   // id: PropTypes.func.isRequired,
-  //   // setSelectedMovie: PropTypes.func.isRequired,
-  // };
 };

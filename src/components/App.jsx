@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 import { Home } from '../pages/Home';
 import { Movies } from '../pages/Movies';
 import { MovieDetails } from '../pages/MovieDetails';
-// import { NotFound } from '../pages/NotFound';
 import { Container, Header, Logo, Link } from './App.styled';
 
 export const App = () => {
@@ -16,17 +15,20 @@ export const App = () => {
           MovieLovers
         </Logo>
         <nav>
-          <Link to="/" end>
+          <Link to="/goit-react-hw-05-movies/" end>
             Home
           </Link>
-          <Link to="/movies">Movies</Link>
+          <Link to="/goit-react-hw-05-movies/movies">Movies</Link>
         </nav>
       </Header>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/goit-react-hw-05-movies/" element={<Home />} />
 
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<MovieDetails />} />
+        <Route path="/goit-react-hw-05-movies/movies" element={<Movies />} />
+        <Route
+          path="/goit-react-hw-05-movies/movies/:movieId"
+          element={<MovieDetails />}
+        />
 
         <Route path="*" element={<Home />} />
       </Routes>

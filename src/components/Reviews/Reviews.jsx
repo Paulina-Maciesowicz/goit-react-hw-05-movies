@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-// import { key } from '../../asset/pass';
 import { Loader } from 'components/Loader/Loader';
 
 const Reviews = () => {
