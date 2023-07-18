@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'components/fetchData';
 import Cast from 'components/Cast/Cast';
 import Reviews from 'components/Reviews/Reviews';
+import { Loader } from 'components/Loader/Loader';
 // import { BackLink } from '../components/BackLink';
-
-// import { useRouteMatch, useParams } from 'react-router-dom';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
 
   console.log(useParams());
   // const movie = getMovieById(id);
-  // const location = useLocation();
   // const backLinkHref = location.state?.from ?? '/';
   const [movieDetails, setMovieDetails] = useState([]);
-  const location = useLocation();
+  // const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -24,7 +22,6 @@ export const MovieDetails = () => {
       setIsLoading(true);
       try {
         const hits = await fetchMovieDetails(movieId);
-        // console.log(movieId());
         setMovieDetails(hits);
         console.log(hits.id);
         setIsLoading(false);
@@ -36,7 +33,11 @@ export const MovieDetails = () => {
     };
 
     movieDetails();
-  }, []);
+  }, [movieId]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <main>
