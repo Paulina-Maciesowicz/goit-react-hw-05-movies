@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
+import React, { useState, useEffect, Suspense } from 'react';
+// import {  useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'components/fetchData';
-import Cast from 'components/Cast/Cast';
-import Reviews from 'components/Reviews/Reviews';
+// import  Cast  from 'components/Cast/Cast';
+// import  Reviews   from 'components/Reviews/Reviews';
 import { Loader } from 'components/Loader/Loader';
 // import { BackLink } from '../components/BackLink';
 
@@ -57,20 +58,27 @@ export const MovieDetails = () => {
         </h2>
         <p>User Score {movieDetails.vote_average}</p>
         <h3>Overview </h3>
-        <p>
-          {movieDetails.overview}
-          {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus
-          sunt excepturi nesciunt iusto dignissimos assumenda ab quae cupiditate
-          a, sed reprehenderit? Deleniti optio quasi, amet natus reiciendis
-          atque fuga dolore? Lorem, ipsum dolor sit amet consectetur adipisicing
-          elit. Impedit suscipit quisquam incidunt commodi fugiat aliquam
-          praesentium ipsum quos unde voluptatum? */}
-        </p>
+        <p>{movieDetails.overview}</p>
         {/* <h4>Genres {movieDetails.genres.name}</h4> */}
         {/* <p>Details {movieDetails.vote_average}</p> */}
       </div>
       <div>
-        {<Cast />} {<Reviews />}
+        <Link
+          to={`/goit-react-hw-05-movies/movies/${movieId}/cast`}
+          // state={{ from: location }}
+        >
+          <p>Cast</p>
+        </Link>
+        <Link
+          to={`/goit-react-hw-05-movies/movies/${movieId}/reviews`}
+          // state={{ from: location }}
+        >
+          <p>Reviews</p>
+        </Link>
+
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </div>
     </main>
   );
