@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-// import { key } from '../../asset/pass';
 import { Loader } from 'components/Loader/Loader';
-import { fetchSearchMovies } from 'components/fetchData';
+import { fetchSearchMovies } from 'services/fetchData';
 
 export function SearchMovies() {
   const [query, setQuery] = useState('');
@@ -20,7 +19,7 @@ export function SearchMovies() {
     setIsLoading(true);
     const fetchMovie = async () => {
       try {
-        const hits = await fetchSearchMovies(query);
+        const hits = await fetchSearchMovies(firstFetchMovie);
         setResults(hits);
         setIsLoading(false);
       } catch (error) {
@@ -66,9 +65,9 @@ export function SearchMovies() {
           {results.map(result => (
             <li key={result.id}>
               <Link
-                to={`/goit-react-hw-05-movies/movies/${result.id}`}
+                to={`/movies/${result.id}`}
                 state={{
-                  from: `/goit-react-hw-05-movies/movies?${searchParams}`,
+                  from: `/movies?${searchParams}`,
                 }}
               >
                 {result.title}

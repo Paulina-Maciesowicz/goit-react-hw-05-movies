@@ -1,6 +1,6 @@
 import { SearchMovies } from 'components/Search/Search';
 
-export const Movies = () => {
+const Movies = () => {
   return (
     <main>
       <h1>Movies page</h1>
@@ -8,3 +8,4 @@ export const Movies = () => {
     </main>
   );
 };
+export default Movies;

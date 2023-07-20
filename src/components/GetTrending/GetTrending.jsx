@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import { fetchData } from 'components/fetchData';
+import { fetchData } from 'services/fetchData';
 import { Loader } from 'components/Loader/Loader';
-
-// import css from './GetTrending.module.css';
 
 export const MovieGallery = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -36,10 +34,7 @@ export const MovieGallery = () => {
       <ul>
         {trendingMovies.map(movie => (
           <li key={movie.id}>
-            <Link
-              to={`/goit-react-hw-05-movies/movies/${movie.id}`}
-              state={{ from: location }}
-            >
+            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
               {movie.title || movie.name}
             </Link>
           </li>

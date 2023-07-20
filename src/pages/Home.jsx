@@ -1,9 +1,10 @@
 import { MovieGallery } from 'components/GetTrending/GetTrending';
 
-export const Home = () => {
+const Home = () => {
   return (
     <main>
       <MovieGallery />
     </main>
   );
 };
+export default Home;

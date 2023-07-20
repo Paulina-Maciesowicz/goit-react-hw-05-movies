@@ -1,48 +1,32 @@
 import { Route, Routes } from 'react-router-dom';
-import { React } from 'react';
-import { Home } from '../pages/Home';
-import { Movies } from '../pages/Movies';
-import { MovieDetails } from '../pages/MovieDetails';
-import { Container, Header, Logo, Link } from './App.styled';
-// import { Loader } from './Loader/';
+import { React, lazy, Suspense } from 'react';
+import { SharedLayout } from './SharedLayout/SharedLayout';
+import { Container } from './App.styled';
+import { Loader } from './Loader/Loader';
 import Cast from './Cast/Cast';
 import Reviews from './Reviews/Reviews';
+
+const Home = lazy(() => import('../pages/Home'));
+const Movies = lazy(() => import('../pages/Movies'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails'));
 
 export const App = () => {
   return (
     <Container>
-      <Header>
-        <Logo>
-          <span role="img" aria-label="computer icon">
-            💻
-          </span>{' '}
-          MovieLovers
-        </Logo>
-        <nav>
-          <Link to="/goit-react-hw-05-movies/" end>
-            Home
-          </Link>
-          <Link to="/goit-react-hw-05-movies/movies">Movies</Link>
-        </nav>
-      </Header>
-      <Routes>
-        <Route path="/goit-react-hw-05-movies/" element={<Home />} />
+      <SharedLayout />
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
 
-        <Route path="/goit-react-hw-05-movies/movies" element={<Movies />} />
-        <Route
-          path="/goit-react-hw-05-movies/movies/:movieId"
-          element={
-            
-              <MovieDetails />
-           
-          }
-        >
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
 
-        <Route path="*" element={<Home />} />
-      </Routes>
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </Suspense>
     </Container>
   );
 };

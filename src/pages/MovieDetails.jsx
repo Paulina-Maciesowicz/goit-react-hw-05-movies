@@ -1,20 +1,16 @@
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 import React, { useState, useEffect, Suspense } from 'react';
-// import {  useParams } from 'react-router-dom';
-import { fetchMovieDetails } from 'components/fetchData';
-// import  Cast  from 'components/Cast/Cast';
-// import  Reviews   from 'components/Reviews/Reviews';
+import { fetchMovieDetails } from 'services/fetchData';
 import { Loader } from 'components/Loader/Loader';
-// import { BackLink } from '../components/BackLink';
+import { BackLink } from 'components/BackLink/BackLink';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
 
-  console.log(useParams());
-  // const movie = getMovieById(id);
-  // const backLinkHref = location.state?.from ?? '/';
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
   const [movieDetails, setMovieDetails] = useState([]);
-  // const location = useLocation();
+
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -42,7 +38,7 @@ export const MovieDetails = () => {
 
   return (
     <main>
-      {/* <BackLink to={backLinkHref}>Go Back</BackLink> */}
+      <BackLink to={backLinkHref}>Go Back</BackLink>
       <img
         src={
           movieDetails.poster_path
@@ -59,20 +55,12 @@ export const MovieDetails = () => {
         <p>User Score {movieDetails.vote_average}</p>
         <h3>Overview </h3>
         <p>{movieDetails.overview}</p>
-        {/* <h4>Genres {movieDetails.genres.name}</h4> */}
-        {/* <p>Details {movieDetails.vote_average}</p> */}
       </div>
       <div>
-        <Link
-          to={`/goit-react-hw-05-movies/movies/${movieId}/cast`}
-          // state={{ from: location }}
-        >
+        <Link to={`/movies/${movieId}/cast`} state={{ from: backLinkHref }}>
           <p>Cast</p>
         </Link>
-        <Link
-          to={`/goit-react-hw-05-movies/movies/${movieId}/reviews`}
-          // state={{ from: location }}
-        >
+        <Link to={`/movies/${movieId}/reviews`} state={{ from: backLinkHref }}>
           <p>Reviews</p>
         </Link>
 
